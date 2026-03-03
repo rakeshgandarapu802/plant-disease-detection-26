@@ -1,0 +1,1 @@
+model.save("plant_disease_model.h5")

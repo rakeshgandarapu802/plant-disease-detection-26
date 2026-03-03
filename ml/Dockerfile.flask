@@ -1,0 +1,20 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Install dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy source files
+COPY flask_service.py .
+COPY class_labels.json .
+COPY remedies.json .
+COPY src/ src/
+
+# Model volume is mounted at runtime
+VOLUME ["/app/models"]
+
+EXPOSE 5001
+
+CMD ["python", "flask_service.py"]

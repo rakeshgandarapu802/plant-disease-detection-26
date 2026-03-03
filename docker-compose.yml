@@ -1,0 +1,74 @@
+version: "3.9"
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: plant_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: plant_disease_db
+      MYSQL_USER: plantuser
+      MYSQL_PASSWORD: plantpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  flask-ml:
+    build:
+      context: ./ml
+      dockerfile: Dockerfile.flask
+    container_name: plant_flask_ml
+    restart: always
+    ports:
+      - "5001:5001"
+    volumes:
+      - ./ml/models:/app/models
+    environment:
+      FLASK_PORT: "5001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+
+  spring-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: plant_spring
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      flask-ml:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/plant_disease_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: plantuser
+      SPRING_DATASOURCE_PASSWORD: plantpass
+      FLASK_SERVICE_URL: http://flask-ml:5001
+      JWT_SECRET: plantDiseaseDetectionSecretKey256BitsLongForSecurity!
+
+  react-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: plant_react
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - spring-backend
+
+volumes:
+  mysql_data:

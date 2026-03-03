@@ -1,0 +1,17 @@
+{
+  "Corn_Common_Rust": "Apply triazole or strobilurin fungicide early. Plant rust-resistant hybrids for future seasons. Remove heavily infected leaves. Ensure good air circulation.",
+  "Corn_Gray_Leaf_Spot": "Use foliar fungicide (propiconazole or azoxystrobin). Improve residue management through tillage. Rotate with non-corn crops to break disease cycle.",
+  "Corn_Northern_Leaf_Blight": "Apply fungicide at early disease onset (tasseling stage). Plant resistant varieties. Practice crop rotation and deep tillage to bury infected residue.",
+  "Corn_healthy": "Plant looks healthy! Monitor for signs of stalk borers and ensure adequate nitrogen levels. Continue regular scouting.",
+
+  "Potato_Early_Blight": "Apply chlorothalonil-based or mancozeb fungicide every 7 days. Ensure proper plant spacing for airflow. Remove infected foliage promptly. Avoid overhead irrigation.",
+  "Potato_Late_Blight": "Apply metalaxyl or mancozeb immediately. Destroy all infected plant material and tubers. Avoid storing diseased potatoes. Use certified, disease-free seed potatoes next season.",
+  "Potato_healthy": "Plant looks healthy! Ensure adequate potassium nutrition and monitor soil moisture. Scout regularly for early signs of blight.",
+
+  "Tomato_Early_Blight": "Remove infected lower leaves immediately. Apply copper-based or chlorothalonil fungicide every 7–10 days. Avoid overhead watering. Rotate crops annually. Mulch to prevent spore splash.",
+  "Tomato_Late_Blight": "Destroy infected plants immediately — do not compost. Apply mancozeb or copper hydroxide fungicide. Improve air circulation. Avoid wet foliage at night. Use resistant varieties.",
+  "Tomato_Leaf_Mold": "Increase ventilation in greenhouse or tunnel. Apply fungicide (copper, mancozeb, or chlorothalonil). Remove and destroy affected leaves. Avoid wetting foliage when watering.",
+  "Tomato_Mosaic_Virus": "No chemical cure is available. Remove and destroy all infected plants immediately. Control aphid populations (virus vectors) with insecticidal soap. Wash hands and tools before handling plants. Use resistant varieties next season.",
+  "Tomato_Septoria_Leaf_Spot": "Remove lower infected leaves. Apply chlorothalonil or copper fungicide. Mulch soil to reduce water splash. Stake plants to improve airflow. Rotate crops each season.",
+  "Tomato_healthy": "Plant looks healthy! Continue regular balanced fertilization, monitor for early disease signs, and ensure consistent deep watering."
+}
